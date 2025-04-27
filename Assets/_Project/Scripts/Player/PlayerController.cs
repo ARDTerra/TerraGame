@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public float Stamina, MaxStamina;
     public float AmountTaken;
     public bool isSprinting;
+    public bool isRefilling;
 
     [Header("Other Numbers")]
     public float ditectionLength;
@@ -32,8 +33,12 @@ public class PlayerController : MonoBehaviour
     [Header("UI")]
     public Slider StaminaBar;
 
+    private Animator anim;
+
     private void Start()
     {
+        anim = gameObject.GetComponent<Animator>();
+
         StaminaBar.maxValue = MaxStamina;
         Stamina = MaxStamina;
         StaminaBar.value = Stamina;
@@ -60,7 +65,7 @@ public class PlayerController : MonoBehaviour
         {
             saveSpeed = speed;
 
-            if (isMoving == true && isHiding == false)
+            if (isMoving == true && isHiding == false && isRefilling == false)
             {
                 isSprinting = true;
                 speed += sprintSpeed;
@@ -96,6 +101,7 @@ public class PlayerController : MonoBehaviour
         Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange);
         foreach (Collider collider in colliderArray)
         {
+            //LOCKER INTERACT
             if (collider.TryGetComponent(out LockerIntract lockerInteract))
             {
                 if (isHiding == false)
@@ -116,6 +122,33 @@ public class PlayerController : MonoBehaviour
                     return;
                 }
             }
+
+            //STAMINA REFILL INTERACT
+            if (collider.TryGetComponent(out StaminaRefillInteract staminaInteract))
+            {
+                isRefilling = true;
+
+                isSprinting = false;
+                isMoving = false;
+
+                var FacePos = new Vector3(staminaInteract.transform.position.x, this.transform.position.y, staminaInteract.transform.position.z);
+                transform.LookAt(FacePos);
+
+                anim.Play("RefillingTest");
+            }
+
+            //ITEM INTERACT
+            if (collider.TryGetComponent(out ItemScript itemScript))
+            {
+                itemScript.Collected();
+                print("Found Item");
+            }
+
+            //LEAVE FLOOR INTERACT
+            if (collider.TryGetComponent(out LeaveArea leaveArea))
+            {
+                leaveArea.LeaveFloor();
+            }
         }
         return;
     }
@@ -133,18 +166,29 @@ public class PlayerController : MonoBehaviour
     void PlayerHideLeave()
     {
         isHiding = false;
+        isSprinting = false;
+
         if (isSprinting == true) speed = speed - sprintSpeed;
 
         speed = saveSpeed;
         GetComponent<Rigidbody>().useGravity = true;
         GetComponent<Collider>().enabled = true;
+    }   
+
+    void StaminaRecover()
+    {
+        Stamina = MaxStamina;
+        StaminaBar.value = Stamina;
+        isRefilling = false;
+        speed = saveSpeed;
+
     }
 
     private void Update()
     {
         if (Stamina > 0)
         {
-            if (isSprinting == true && isMoving == true && isHiding == false)
+            if (isSprinting == true && isMoving == true && isHiding == false && isRefilling == false)
             {
                 StaminaBar.value = Stamina;
                 Stamina -= AmountTaken * Time.deltaTime;
@@ -164,6 +208,8 @@ public class PlayerController : MonoBehaviour
 
     public void MovePlayer()
     {
+        if (isRefilling == true) return;
+
         Vector3 movement = new Vector3(move.x, 0f, move.y);
 
         if (movement != Vector3.zero)

@@ -22,6 +22,7 @@ public class UiSet : MonoBehaviour
         if (other.tag == "Player")
         {
             detectUI.transform.localPosition = new Vector3(0, 1, 0);
+            detectUI.transform.GetChild(0).localScale = Vector3.one;
 
             if (FindAnyObjectByType<GameManager>().PhonePort == false)
             {
@@ -30,7 +31,7 @@ public class UiSet : MonoBehaviour
             else
             {
                 InteractButton.transform.localPosition = Pos.transform.localPosition;
-            SprintButton.transform.localPosition = new Vector3(582, -7, 0);
+                SprintButton.transform.localPosition = new Vector3(582, -7, 0);
             }
         }
     }
@@ -39,6 +40,7 @@ public class UiSet : MonoBehaviour
         if (other.tag == "Player")
         {
             detectUI.transform.localPosition = new Vector3(0, -3, 0);
+            detectUI.transform.GetChild(0).localScale = Vector3.zero;
 
             if (FindAnyObjectByType<GameManager>().PhonePort == false)
             {
@@ -46,8 +48,8 @@ public class UiSet : MonoBehaviour
             }
             else
             {
-            InteractButton.transform.localPosition = new Vector3(582, -7, 0);
-            SprintButton.transform.localPosition = Pos.transform.localPosition;
+                InteractButton.transform.localPosition = new Vector3(582, -7, 0);
+                SprintButton.transform.localPosition = Pos.transform.localPosition;
             }
         }
     }
