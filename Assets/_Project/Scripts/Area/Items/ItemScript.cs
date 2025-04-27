@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class ItemScript : MonoBehaviour
 {
-  public void Collected()
+    public string itemID;
+
+    public void Collect()
     {
+        ItemUiSlot manager = FindFirstObjectByType<ItemUiSlot>();
+        manager.CollectItem(itemID);
         Destroy(gameObject);
     }
 }

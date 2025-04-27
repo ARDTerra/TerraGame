@@ -140,7 +140,7 @@ public class PlayerController : MonoBehaviour
             //ITEM INTERACT
             if (collider.TryGetComponent(out ItemScript itemScript))
             {
-                itemScript.Collected();
+                itemScript.Collect();
                 print("Found Item");
             }
 

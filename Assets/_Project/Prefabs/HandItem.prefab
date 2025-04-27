@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 8841355468061431395}
   - component: {fileID: 6143823671728888216}
   m_Layer: 0
-  m_Name: Item
+  m_Name: HandItem
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -226,6 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eca484026ad488a4d928e3d0218daec7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName: Hand
 --- !u!65 &6143823671728888216
 BoxCollider:
   m_ObjectHideFlags: 0

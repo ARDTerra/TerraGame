@@ -5,18 +5,18 @@ using TMPro;
 
 public class LeaveArea : MonoBehaviour
 {
-    public GameManager Manager;
+    public ItemUiSlot ItemUiSlot;
 
     [SerializeField] TextMeshProUGUI LeaveDoorText;
 
     private void Start()
     {
-        Manager = FindAnyObjectByType<GameManager>();
+        ItemUiSlot = FindAnyObjectByType<ItemUiSlot>();
     }
 
     private void Update()
     {
-        if(Manager.CurrentItemsFound != Manager.MaxAmountItemsFound)
+        if(ItemUiSlot.CurrentItemsFound != ItemUiSlot.MaxAmountItemsFound)
         {
             LeaveDoorText.text = "Need Rest Items";
         }
@@ -28,12 +28,12 @@ public class LeaveArea : MonoBehaviour
 
     public void LeaveFloor()
     {
-        if(Manager.CurrentItemsFound != Manager.MaxAmountItemsFound)
+        if(ItemUiSlot.CurrentItemsFound != ItemUiSlot.MaxAmountItemsFound)
         {
             return;
         }
 
-        if(Manager.CurrentItemsFound == Manager.MaxAmountItemsFound)
+        if(ItemUiSlot.CurrentItemsFound == ItemUiSlot.MaxAmountItemsFound)
         {
             print("Level Won");
         }
