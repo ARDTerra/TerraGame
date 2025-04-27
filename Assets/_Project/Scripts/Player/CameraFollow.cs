@@ -4,30 +4,27 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
+    [Header("Target Details")]
     public Transform target;
-    public float smoothTime;
-    public Vector3 offsetPos;
 
-    public Vector3 offsetRot;
+    [Header("Movement Settings")]
+    public float smoothTime;
     public float rotationSpeed;
 
-    private Vector3 velocity = Vector3.zero;
+    [Header("Offsets")]
+    public Vector3 offsetPos;
+    public Vector3 offsetRot;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private Vector3 velocity = Vector3.zero; //zeroed velocity
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if(target != null)
         {
-            Vector3 targetPosition = target.position + offsetPos;
+            Vector3 targetPosition = target.position + offsetPos; // sets target pos and offset
 
-            transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
-            transform.rotation = Quaternion.Euler(offsetRot * rotationSpeed);
+            transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime); // updates cam pos
+            transform.rotation = Quaternion.Euler(offsetRot * rotationSpeed); // updates cam rot
         }
     }
 }

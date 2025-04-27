@@ -248,9 +248,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1965109847}
   smoothTime: 0.3
+  rotationSpeed: 1
   offsetPos: {x: 0, y: 3, z: -12}
   offsetRot: {x: 45, y: 0, z: 0}
-  rotationSpeed: 1
 --- !u!4 &265278992
 Transform:
   m_ObjectHideFlags: 0
@@ -681,37 +681,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 667459847}
   m_CullTransparentMesh: 1
---- !u!1 &682122823
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 682122824}
-  m_Layer: 0
-  m_Name: ItemSpawnPoint (4)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &682122824
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 682122823}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.5, y: 1, z: 19.1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1766115639}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -999,7 +968,7 @@ MonoBehaviour:
   uiParent: {fileID: 906724057}
   spawnPointParent: {fileID: 1766115639}
   spawnParent: {fileID: 1766115639}
-  MaxAmountItemsFound: 5
+  MaxAmountItemsFound: 4
   CurrentItemsFound: 0
 --- !u!1 &891736042
 GameObject:
@@ -1488,68 +1457,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1766115639}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1444272386
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1444272387}
-  m_Layer: 0
-  m_Name: ItemSpawnPoint (3)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1444272387
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1444272386}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.34, y: 1, z: -21.52}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1766115639}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1468341628
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1468341629}
-  m_Layer: 0
-  m_Name: ItemSpawnPoint (5)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1468341629
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1468341628}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.54, y: 1, z: -14.08}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1766115639}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1539653028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1873,9 +1780,6 @@ Transform:
   - {fileID: 1213024775}
   - {fileID: 1234288}
   - {fileID: 99686979}
-  - {fileID: 1444272387}
-  - {fileID: 682122824}
-  - {fileID: 1468341629}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1943856939
@@ -2117,15 +2021,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 8
   rotationSpeed: 0.5
-  isMoving: 0
   sprintSpeed: 8
   Stamina: 10
   MaxStamina: 3
   AmountTaken: 1
-  isSprinting: 0
-  isRefilling: 0
   ditectionLength: 3
   isHiding: 0
+  isSprinting: 0
+  isRefilling: 0
+  isMoving: 0
   StaminaBar: {fileID: 714865915}
 --- !u!114 &1965109849
 MonoBehaviour:

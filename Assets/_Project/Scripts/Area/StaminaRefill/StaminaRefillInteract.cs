@@ -4,17 +4,6 @@ using UnityEngine;
 
 public class StaminaRefillInteract : MonoBehaviour
 {
+    // this is the middle of the stamina refill thing. so the player looks at it when refilling
     public GameObject LookPos;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LockerIntract : MonoBehaviour
 {
+    // this position is where the player will be spawned from when leaving
     public GameObject OutPos;
 
     public void Interact()
