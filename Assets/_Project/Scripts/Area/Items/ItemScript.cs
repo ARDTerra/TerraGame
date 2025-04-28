@@ -12,7 +12,19 @@ public class ItemScript : MonoBehaviour
     {
         ItemUiSlot manager = FindFirstObjectByType<ItemUiSlot>(); // find this on the game manager
         manager.CollectItem(itemID); // sends a message to the script with the id of the item
-        // NEED TO ADD A THING THAT INCREASE THE VVALUE OF ALL COLLECTED ITEMS. SO THE PLAYER CAN LEAVE ---------------------------
-        Destroy(gameObject); // destorys it lmaooo
+
+        FindAnyObjectByType<ItemUiSlot>().CurrentItemsFound++;
+
+        this.transform.position =  new Vector3(transform.position.x, transform.position.y - 5, transform.position.z); // sends object below map to hide
+        StartCoroutine(WaitForDeath(1f)); // calls coroutine and waits for x amount of seconds 
+    }
+
+    private IEnumerator WaitForDeath(float waitTime) // wait for death
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(waitTime);
+            Destroy(gameObject);
+        }
     }
 }

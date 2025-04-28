@@ -219,6 +219,7 @@ public class PlayerController : MonoBehaviour
     public void MovePlayer() // MovePlayer function
     {
         if (isRefilling == true) return; // makes sure player cant move when refilling
+        if(isHiding == true) return; // makes sure player cant move when hiding
 
         Vector3 movement = new Vector3(move.x, 0f, move.y); // vector movement
 
